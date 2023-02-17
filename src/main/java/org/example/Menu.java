@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Menu {
     Account account;
     Scanner scanner;
+    MenuOption option;
 
     public Menu() {
         this.account = new Account();
@@ -24,7 +25,12 @@ public class Menu {
         return scanner.next();
     }
 
+    public Double getNextDouble() {
+        return scanner.nextDouble();
+    }
+
     public void printMenu() {
+        System.out.println();
         System.out.println("1. Add income");
         System.out.println("2. Add purchase");
         System.out.println("3. View purchases");
@@ -37,5 +43,21 @@ public class Menu {
 
     public void exit() {
         System.out.println("Bye!");
+    }
+
+    public void addTransaction(int categoryInt) {
+        System.out.println("Enter name: ");
+        String name = getNextString();
+        System.out.println("Enter amount: ");
+        double amount = getNextDouble();
+        account.addTransaction(name, amount, Category.values()[categoryInt - 1]);
+    }
+
+    public void printCategoryMenu() {
+        System.out.println("1) Food");
+        System.out.println("2) Entertainment");
+        System.out.println("3) Clothes");
+        System.out.println("4) Other");
+        System.out.println("5) Back");
     }
 }

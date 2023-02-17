@@ -3,10 +3,12 @@ package org.example;
 public class Transaction {
     private String name;
     private double amount;
+    private Category category;
 
-    public Transaction(String name, double amount) {
+    public Transaction(String name, double amount, Category category) {
         this.name = name;
         this.amount = amount;
+        this.category = category;
     }
 
     public String getName() {
@@ -24,5 +26,5 @@ public class Transaction {
     public void setAmount(double amount) {
         this.amount = amount;
     }
-    
+
 }
