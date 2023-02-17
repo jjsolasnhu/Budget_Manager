@@ -1,46 +1,54 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class AppRunner {
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
         Menu menu = new Menu();
 
         menu.greet();
 
         while (true) {
             menu.printMenu();
-            menu.option = MenuOption.values()[menu.getNextInt()];
+            int menuOption = scan.nextInt();
 
-            if (menu.option == MenuOption.EXIT) {
+            if (menuOption == 0) {
+                menu.exit();
                 break;
             }
 
-            switch (menu.option) {
-                case ADD_INCOME:
+            switch (menuOption) {
+                case 1:
                     //add income
-                    System.out.println("Adding income");
+                    System.out.println("Set your income");
+                    double income = scan.nextDouble();
+                    menu.account.setBalance(income);
                     break;
-                case ADD_PURCHASE:
+                case 2:
                     //add purchase
                     menu.printCategoryMenu();
-                    menu.addTransaction(menu.getNextInt());
+                    menu.transactionMenu(menu.getNextInt());
                     break;
-                case VIEW_PURCHASES:
+                case 3:
                     //view purchases
-                    System.out.println("Viewing purchases");
+                    System.out.println("Total purchases\n");
+                    menu.printTransactions();
                     break;
-                case VIEW_BALANCE:
+                case 4:
                     //view balance
-                    System.out.println("Viewing balance");
+                    System.out.println("Your balance is: ");
+                    System.out.println("$" + menu.account.getBalance());
                     break;
-                case SAVE:
+                case 5:
                     //save
                     System.out.println("Saving");
                     break;
-                case LOAD:
+                case 6:
                     //load
                     System.out.println("Loading");
                     break;
-                case SORT:
+                case 7:
                     //sort
                     System.out.println("Sorting");
                     break;

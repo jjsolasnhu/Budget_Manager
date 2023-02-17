@@ -27,4 +27,15 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String toString() {
+        return category + ": " + name + " $" + amount;
+    }
 }

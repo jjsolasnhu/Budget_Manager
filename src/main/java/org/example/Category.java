@@ -1,8 +1,8 @@
 package org.example;
 
 public enum Category {
-    FOOD,
-    ENTERTAINMENT,
-    CLOTHES,
-    OTHER
+    Food,
+    Entertainment,
+    Clothes,
+    Other
 }

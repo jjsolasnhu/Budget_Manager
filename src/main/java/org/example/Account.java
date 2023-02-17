@@ -6,7 +6,7 @@ import java.util.List;
 public class Account {
     private String name;
     private double balance;
-    List<Transaction> transactions;
+    private ArrayList<Transaction> transactions;
 
     public Account() {
         this.name = "Main";
@@ -18,5 +18,34 @@ public class Account {
         Transaction transaction = new Transaction(name, amount, category);
         this.transactions.add(transaction);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getBalance() {
+        double totalPurchases = 0.0;
+        for (Transaction x : transactions) {
+            totalPurchases += x.getAmount();
+        }
+        return balance - totalPurchases;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(ArrayList<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
 
 }

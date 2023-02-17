@@ -1,32 +1,33 @@
 package org.example;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Menu {
     Account account;
     Scanner scanner;
-    MenuOption option;
 
     public Menu() {
         this.account = new Account();
         this.scanner = new Scanner(System.in);
     }
 
-    public void greet() {
-        System.out.println("Choose your action:");
-    }
-
+    /*
+    HELPER METHODS TO GET USER INPUT
+     */
     public int getNextInt() {
         return scanner.nextInt();
     }
 
-    public String getNextString() {
-        return scanner.next();
-    }
+    /*
+    ************************************
+     */
 
-    public Double getNextDouble() {
-        return scanner.nextDouble();
+
+    /*
+    METHODS TO PRINT USER INPUT
+     */
+    public void greet() {
+        System.out.println("Choose your action:");
     }
 
     public void printMenu() {
@@ -41,18 +42,6 @@ public class Menu {
         System.out.println("0. Exit");
     }
 
-    public void exit() {
-        System.out.println("Bye!");
-    }
-
-    public void addTransaction(int categoryInt) {
-        System.out.println("Enter name: ");
-        String name = getNextString();
-        System.out.println("Enter amount: ");
-        double amount = getNextDouble();
-        account.addTransaction(name, amount, Category.values()[categoryInt - 1]);
-    }
-
     public void printCategoryMenu() {
         System.out.println("1) Food");
         System.out.println("2) Entertainment");
@@ -60,4 +49,23 @@ public class Menu {
         System.out.println("4) Other");
         System.out.println("5) Back");
     }
+
+    public void printTransactions() {
+        for (Transaction x : account.getTransactions()) {
+            System.out.println(x);
+        }
+    }
+
+    public void exit() {
+        System.out.println("Bye!");
+    }
+
+    public void transactionMenu(int categoryInt) {
+        System.out.println("Enter name: ");
+        String name = scanner.next();
+        System.out.println("Enter amount: ");
+        double amount = scanner.nextDouble();
+        account.addTransaction(name, amount, Category.values()[categoryInt - 1]);
+    }
+
 }
