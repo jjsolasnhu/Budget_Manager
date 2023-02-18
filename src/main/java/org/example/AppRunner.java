@@ -21,32 +21,28 @@ public class AppRunner {
             switch (menuOption) {
                 case 1:
                     //add income
-                    System.out.println("Set your income");
-                    double income = scan.nextDouble();
-                    menu.account.setBalance(income);
+                    menu.setIncome();
                     break;
                 case 2:
                     //add purchase
                     menu.printCategoryMenu();
-                    menu.transactionMenu(menu.getNextInt());
+                    menu.transactionMenu(scan.nextInt());
                     break;
                 case 3:
                     //view purchases
-                    System.out.println("Total purchases\n");
                     menu.printTransactions();
                     break;
                 case 4:
                     //view balance
-                    System.out.println("Your balance is: ");
-                    System.out.println("$" + menu.account.getBalance());
+                    menu.printBalance();
                     break;
                 case 5:
                     //save
-                    System.out.println("Saving");
+                    menu.save();
                     break;
                 case 6:
                     //load
-                    System.out.println("Loading");
+                    menu.load();
                     break;
                 case 7:
                     //sort
